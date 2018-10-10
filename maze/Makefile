@@ -7,7 +7,10 @@ build:
 compile:
 	ninja -C build
 
+run:
+	./bin/Maze
 all:
 	make clean
 	make build
 	make compile
+	make run

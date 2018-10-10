@@ -4,7 +4,7 @@
 #include <memory>
 
 using namespace std;
-using NaiveApproach::Maze;
+using MazeComponents::Maze;
 using NaiveApproach::MazeGame;
 
 int main()
