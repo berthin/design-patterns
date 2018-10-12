@@ -9,7 +9,7 @@ using namespace std;
 using namespace MazeComponents;
 
 
-namespace Builder
+namespace CreationalPatterns
 {
 
 
@@ -21,19 +21,15 @@ StandardMazeBuilder::StandardMazeBuilder():
 
 void StandardMazeBuilder::buildMaze()
 {
-    //unique_ptr<Maze> other;
-    //maze.swap(other);
-    //maze.release();
-    //maze = move(unique_ptr<Maze*>());
     maze = make_unique<Maze>();
-
-    //maze = move(new_maze);
 }
+
 
 StandardMazeBuilder::~StandardMazeBuilder()
 {
     cout << "Calling destructor from standardbuilder" << endl;
 }
+
 
 void StandardMazeBuilder::buildRoom(int room_number)
 {

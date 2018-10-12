@@ -1,49 +1,49 @@
 #include <iostream>
 #include <memory>
 
-#include "MazeFactory.hpp"
-#include "NaiveMaze.hpp"
+#include "MazeGame.hpp"
+#include "MazeAbstractFactory.hpp"
 #include "MazeBuilder.hpp"
+#include "MazeFactoryMethod.hpp"
 
 using namespace std;
-
-using MazeComponents::Maze;
-using NaiveApproach::MazeGame;
-using AbstractFactory::MazeFactory;
-using Builder::StandardMazeBuilder;
+using namespace CreationalPatterns;
+using namespace MazeComponents;
 
 
 void naiveApproach()
 {
-    cout << "Creating a maze" << endl;
-    unique_ptr<Maze> firstMaze(MazeGame::createMaze());
-    cout << "Naive maze created" << endl;
+    unique_ptr<Maze> maze(MazeGame::createMaze());
 }
 
 
 void abstractFactory()
 {
-    cout << "Creating a maze" << endl;
-    MazeFactory factory;
-    unique_ptr<Maze> abstract_factory_maze(MazeGame::createMaze(factory));
-    cout << "Abstract factory maze created" << endl;
+    MazeAbstractFactory factory;
+    unique_ptr<Maze> maze(MazeGame::createMaze(factory));
 }
 
 
 void builderPattern()
 {
-    cout << endl;
-    cout << "Builder Pattern" << endl;
-    cout << "===============" << endl;
-
     StandardMazeBuilder builder;
 
     MazeGame game;
     game.createMaze(builder);
 
+    // @TODO: Refactor the ownership of Maze in Builder.
+    // Currently the ownership is maintained in Builder, but
+    // it must be transfered to the instance which calls
+    // `Builder::getMaze()`.
     Maze* maze(builder.getMaze());
+}
 
-    cout << "Builder maze created" << endl;
+
+void factoryMethod()
+{
+
+    EnchantedMazeFactoryMethod factory;
+    unique_ptr<Maze> maze(factory.createMaze());
 }
 
 
@@ -51,9 +51,25 @@ int main()
 {
     try
     {
+        cout << "Naive Approach" << endl;
+        cout << "==============" << endl;
         naiveApproach();
+        cout << endl;
+
+        cout << "Abstract Factory" << endl;
+        cout << "================" << endl;
         abstractFactory();
+        cout << endl;
+
+        cout << "Builder" << endl;
+        cout << "=======" << endl;
         builderPattern();
+        cout << endl;
+
+        cout << "Factory Method" << endl;
+        cout << "==============" << endl;
+        factoryMethod();
+        cout << endl;
     }
     catch (...)
     {

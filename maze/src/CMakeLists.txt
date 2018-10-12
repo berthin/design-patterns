@@ -1,7 +1,10 @@
 # Define all source files
-set(SOURCE_FILES "MazeComponents.cpp"
-                 "NaiveMaze.cpp"
-                 "MazeFactory.cpp"
+set(SOURCE_FILES # General files:
+                 "MazeComponents.cpp"
+                 "MazeGame.cpp"
+                 # Patterns:
+                 "MazeAbstractFactory.cpp"
+                 "MazeFactoryMethod.cpp"
                  "MazeBuilder.cpp")
 
 # Configure compiling flags

@@ -45,6 +45,20 @@ Builder
 - Isolates code for construction and representation and gives you a better control over the construction process.
 - In the Maze example, StandardMazeBuilder is in charge of creating all parts of the maze, and MazeGame will be in charge of assemble those parts to create the maze. Also, as an extension, you can also implement a different MazeBuilder (e.g. CountingMazeBuilder) that instead of creating the objects, it just counts how many objects are created. Then, the only thing to change would be the parameter that MazeGame receives.
 
+Factory Method
+==============
+- Defines an interface for creating objects, but let subclasses decide which class to instantiate.
+- Factory method is used when:
+    - A class cannot anticipate the class of objects it must create.
+    - A class wants its subclasses to specify the objects it creates.
+    - Classes delegate responsability to one of several helper subclasses.
+- A factory method receives 4 participants:
+    1) Product; defines the interface of the objects that the factory method creates
+    2) ConcreteProduct; the implementation of Product.
+    3) Creator; declares the factory method that returns an object of type Product, it can call the factory method to create the Product object.
+    4) ConcreteCreator; overrides the factory method to return an instance of a ConcreteProduct.
+
+
 Differences
 ===========
 Abstract Factory vs Builder:
