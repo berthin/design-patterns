@@ -138,8 +138,24 @@ Room* Maze::getRoom(int room_number)
     return rooms[room_number].get();
 }
 
+//Maze& Maze::operator=(Maze&& other)
+//{
+    //if (this != &other) {
+        //swap(rooms, other.rooms);
+    //}
+    //return *this;
+//}
 
+//Maze& Maze::operator=(const Maze& other)
+//{
+    //rooms = other.rooms;
+    //return *this;
+//}
 
+//Maze::Maze(Maze&& other):
+    //rooms(move(other.rooms))
+//{
+//}
 
 }
 

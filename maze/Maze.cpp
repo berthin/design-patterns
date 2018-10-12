@@ -1,15 +1,16 @@
-#include "NaiveMaze.hpp"
-
 #include <iostream>
 #include <memory>
 
 #include "MazeFactory.hpp"
+#include "NaiveMaze.hpp"
+#include "MazeBuilder.hpp"
 
 using namespace std;
 
 using MazeComponents::Maze;
 using NaiveApproach::MazeGame;
 using AbstractFactory::MazeFactory;
+using Builder::StandardMazeBuilder;
 
 
 void naiveApproach()
@@ -29,12 +30,30 @@ void abstractFactory()
 }
 
 
+void builderPattern()
+{
+    cout << endl;
+    cout << "Builder Pattern" << endl;
+    cout << "===============" << endl;
+
+    StandardMazeBuilder builder;
+
+    MazeGame game;
+    game.createMaze(builder);
+
+    Maze* maze(builder.getMaze());
+
+    cout << "Builder maze created" << endl;
+}
+
+
 int main()
 {
     try
     {
         naiveApproach();
         abstractFactory();
+        builderPattern();
     }
     catch (...)
     {

@@ -1,7 +1,8 @@
 # Define all source files
 set(SOURCE_FILES "MazeComponents.cpp"
                  "NaiveMaze.cpp"
-                 "MazeFactory.cpp")
+                 "MazeFactory.cpp"
+                 "MazeBuilder.cpp")
 
 # Configure compiling flags
 set(CMAKE_CXX_FLAGS "-std=c++14 -g")

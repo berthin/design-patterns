@@ -22,6 +22,7 @@ enum class Direction
 class MapSite
 {
 public:
+    // @TODO: Implement this function.
     //virtual void enter() = 0;
 };
 
@@ -32,11 +33,12 @@ class Room: public MapSite
 public:
     Room(int room_number_p);
 
-    Room(const Room& other);      // copy-constructor
-    Room(Room&& other);         // move-constructor
+    Room(const Room& other);            // copy-constructor
+    Room(Room&& other);                 // move-constructor
     Room& operator=(const Room& other); // copy-assignment
-    Room& operator=(Room&& other);     // move-assignment
+    Room& operator=(Room&& other);      // move-assignment
 
+    // @TODO: Implement this function.
     //virtual void enter();
 
     int getNumber() const;
@@ -59,6 +61,7 @@ class Wall: public MapSite
 public:
     Wall();
 
+    // @TODO: Implement this function.
     //virtual void enter();
 };
 
@@ -71,6 +74,7 @@ public:
     Door(Room* from_room_p,
          Room* to_room_p);
 
+    // @TODO: Implement this function.
     //virtual void enter();
 
     Room* otherSideFrom(Room* room);
@@ -87,11 +91,16 @@ class Maze final
 public:
     Maze();
 
+    //Maze(Maze&& other);
+    //Maze& operator=(Maze&& other);
+    //Maze& operator=(const Maze& other);
+
     void addRoom(std::unique_ptr<Room> room);
 
     Room* getRoom(int room_number);
 
     ~Maze() = default;
+
 private:
     std::unordered_map<int, std::unique_ptr<Room>> rooms;
 };
