@@ -43,6 +43,15 @@ Builder
 
 - Since the product representation is encapsulated, you are free to change its internal representation. Because the builder provides the director an abstract interface, it hides how the product gets assembled.
 - Isolates code for construction and representation and gives you a better control over the construction process.
+- In the Maze example, StandardMazeBuilder is in charge of creating all parts of the maze, and MazeGame will be in charge of assemble those parts to create the maze. Also, as an extension, you can also implement a different MazeBuilder (e.g. CountingMazeBuilder) that instead of creating the objects, it just counts how many objects are created. Then, the only thing to change would be the parameter that MazeGame receives.
 
+Differences
+===========
+Abstract Factory vs Builder:
+----------------------------
+- Builder focuses on constructing a complex object step by step.
+- Abstract Factory puts emphasis on families of product objects.
+- Builder returns the product as a final step.
+- Abstract Factory return the product inmediately.
 
 
