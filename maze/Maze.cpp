@@ -19,7 +19,7 @@ void naiveApproach()
 
 void abstractFactory()
 {
-    MazeAbstractFactory factory;
+    BombedMazeAbstractFactory factory;
     unique_ptr<Maze> maze(MazeGame::createMaze(factory));
 }
 

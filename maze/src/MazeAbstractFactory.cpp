@@ -36,10 +36,10 @@ Door* MazeAbstractFactory::makeDoor(
 }
 
 
-Room* EnchantedMazeAbstractFactory::makeRoom(
+Room* BombedMazeAbstractFactory::makeRoom(
     int room_number) const
 {
-    cout << "Creating an enchanted room!" << endl;
+    cout << "Creating a bombed room!" << endl;
     return new Room(room_number);
 }
 

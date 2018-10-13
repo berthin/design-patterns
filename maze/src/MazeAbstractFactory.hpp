@@ -26,7 +26,7 @@ public:
 };
 
 
-class EnchantedMazeAbstractFactory: public MazeAbstractFactory
+class BombedMazeAbstractFactory: public MazeAbstractFactory
 {
 
 public:
