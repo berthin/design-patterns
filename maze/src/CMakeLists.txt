@@ -2,11 +2,13 @@
 set(SOURCE_FILES # General files:
                  "MazeComponents.cpp"
                  "MazeGame.cpp"
-                 # Patterns:
+                 # Creational Patterns:
                  "MazeAbstractFactory.cpp"
                  "MazeFactoryMethod.cpp"
                  "MazePrototypeFactory.cpp"
-                 "MazeBuilder.cpp")
+                 "MazeBuilder.cpp"
+                 # Singleton:
+                 "Logger.cpp")
 
 # Configure compiling flags
 set(CMAKE_CXX_FLAGS "-std=c++14 -g")

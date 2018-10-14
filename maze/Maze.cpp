@@ -7,6 +7,8 @@
 #include "MazeFactoryMethod.hpp"
 #include "MazePrototypeFactory.hpp"
 
+#include "Logger.hpp"
+
 using namespace std;
 using namespace CreationalPatterns;
 using namespace MazeComponents;
@@ -63,6 +65,12 @@ void factoryMethod()
 
 int main()
 {
+    LOGINFO("The following creational patterns are implemented:");
+    LOGINFO(" - Abstract Factory");
+    LOGINFO(" - Factory Methods");
+    LOGINFO(" - Prototype");
+    LOGINFO(" - Builder");
+    LOGINFO(" - Singleton");
     try
     {
         cout << "Naive Approach" << endl;

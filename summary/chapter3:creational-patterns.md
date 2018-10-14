@@ -77,6 +77,18 @@ Prototype
 - Note: subclasses of Prototype must implement the clone operation. Implementing clone can be difficult when internal objects do not support copying or have ciruclar references.
 
 
+Singleton
+=========
+- Ensures that a class instance is created only once and provides a global access to it.
+- It makes use of a global variable to ensure that the object is accessible and also it does not allow you to keep multiple instances.
+- The Singleton is responsible for creating its own unique instance.
+- Client access to the singleton function members only through its interface.
+- Some of the benefits are:
+    - Controlls access to sole instance
+    - Reduces the names space
+    - Permits refinement of operations and representation
+    - Permits a variable number of instances. (not recomended perhaps??)
+    - More flexible than class operations. Another way to package a singleton is to use class operations (static function members)
 
 Differences
 ===========

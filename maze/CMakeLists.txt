@@ -4,6 +4,9 @@ project(Maze)
 
 include_directories(${PROJECT_BINARY_DIR})
 
+# Enable Logger 
+add_definitions(-D "ENABLE_LOGGER")
+
 # Specify the directories to store the executables and libraries
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
@@ -13,6 +16,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 set(EXTRA_LIBS ${EXTRA_LIBS} MazeCreator)
+
 
 # Create the executable
 add_executable(Maze Maze.cpp)
