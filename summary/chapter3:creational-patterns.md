@@ -58,6 +58,25 @@ Factory Method
     3) Creator; declares the factory method that returns an object of type Product, it can call the factory method to create the Product object.
     4) ConcreteCreator; overrides the factory method to return an instance of a ConcreteProduct.
 
+Prototype
+=========
+- Specifies the kinds of objects to create using a prototypical instance and creates new objects by copying this prototype.
+- Prototype is used when a system must be independent of how products are created. It can also be used in the following cases:
+    - When the classes to instantiate are specified at run-time.
+    - To avoid building a class hierarchy of factories
+    - When instances of a class have one of only a few different combinations of state.
+- The Prototype patterns needs three participants:
+    1. Prototype; declares the interface for cloning itself
+    2. ConcretePrototype; implements prototype
+    3. Client; creates a new object by asking a prototype to build itself
+- Benefits of prototype:
+    - It allows you to add and remove products at run-time
+    - New objects can be created by varying its values or structure
+    - Reduces subclassing
+    - It is easy to configure an application with classes dynamically
+- Note: subclasses of Prototype must implement the clone operation. Implementing clone can be difficult when internal objects do not support copying or have ciruclar references.
+
+
 
 Differences
 ===========
@@ -67,5 +86,11 @@ Abstract Factory vs Builder:
 - Abstract Factory puts emphasis on families of product objects.
 - Builder returns the product as a final step.
 - Abstract Factory return the product inmediately.
+
+Abstract Factory vs Factory Methods
+-----------------------------------
+- Abstract Factory is commonly implemented with factory methods
+- Factory methods are called also Template Methods.
+- Factory methods dont require initialize the objects.
 
 

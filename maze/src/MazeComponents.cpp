@@ -2,6 +2,8 @@
 
 #include <cassert>
 #include <iostream>
+#include <utility>
+#include <algorithm>
 
 
 using namespace std;
@@ -10,9 +12,19 @@ using namespace std;
 namespace MazeComponents
 {
 
+// -----------------------------------
+// MAPSITE
+// -----------------------------------
 
+MapSite* MapSite::clone() const
+{
+    return new MapSite(*this);
+}
+
+// -----------------------------------
 // ROOM
-//
+// -----------------------------------
+
 Room::Room(int room_number_p):
     room_number(room_number_p),
     sides()
@@ -23,38 +35,41 @@ Room::Room(int room_number_p):
 
 Room::Room(const Room& other):
     room_number(other.room_number),
-    sides(other.sides)
+    //sides(other.sides)
+    sides()
 {
     cout << "Copy constructor" << endl;
 }
 
 
-Room::Room(Room&& other):
-    room_number(move(other.room_number)),
-    sides(move(other.sides))
-{
-    cout << "Move constructor" << endl;
-}
+//Room::Room(Room&& other):
+    //room_number(move(other.room_number)),
+    //sides(move(other.sides))
+//{
+    ////swap(room_number, other.room_number);
+    ////swap(sides, other.sides);
+    //cout << "Move constructor" << endl;
+//}
 
 
-Room& Room::operator=(const Room& other)
-{
-    cout << "Copy assignment" << endl;
-    room_number = other.room_number;
-    sides = other.sides;
-    return *this;
-}
+//Room& Room::operator=(const Room& other)
+//{
+    //cout << "Copy assignment" << endl;
+    //room_number = other.room_number;
+    //sides = other.sides;
+    //return *this;
+//}
 
 
-Room& Room::operator=(Room&& other)
-{
-    cout << "Move assignment" << endl;
-    if (this != &other) {
-        swap(room_number, other.room_number);
-        swap(sides, other.sides);
-    }
-    return *this;
-}
+//Room& Room::operator=(Room&& other)
+//{
+    //cout << "Move assignment" << endl;
+    //if (this != &other) {
+        //swap(room_number, other.room_number);
+        //swap(sides, other.sides);
+    //}
+    //return *this;
+//}
 
 
 int Room::getNumber() const
@@ -77,26 +92,10 @@ MapSite* Room::getSide(Direction dir)
 }
 
 
-// WALL
-//
-Wall::Wall()
+void Room::initialize(
+    int room_number_p)
 {
-}
-
-
-// DOOR
-//
-Door::Door():
-    Door(nullptr, nullptr)
-{
-}
-
-
-Door::Door(Room* from, Room* to):
-    from_room(from),
-    to_room(to),
-    is_open(false)
-{
+    room_number = room_number_p;
 }
 
 
@@ -116,13 +115,40 @@ Room::~Room()
          << " was called." << endl;
 }
 
+// -----------------------------------
+// WALL
+// -----------------------------------
 
+void Wall::initialize()
+{}
+
+// -----------------------------------
+// DOOR
+// -----------------------------------
+Door::Door():
+    Door(nullptr, nullptr)
+{}
+
+
+Door::Door(Room* from, Room* to):
+    from_room(from),
+    to_room(to),
+    is_open(false)
+{}
+
+
+void Door::initialize(Room* from, Room* to)
+{
+    from_room = from;
+    to_room = to;
+}
+
+// -----------------------------------
 // MAZE
-//
+// -----------------------------------
 Maze::Maze():
     rooms()
-{
-}
+{}
 
 
 void Maze::addRoom(unique_ptr<Room> room)
@@ -138,24 +164,22 @@ Room* Maze::getRoom(int room_number)
     return rooms[room_number].get();
 }
 
-//Maze& Maze::operator=(Maze&& other)
-//{
-    //if (this != &other) {
-        //swap(rooms, other.rooms);
-    //}
-    //return *this;
-//}
 
-//Maze& Maze::operator=(const Maze& other)
-//{
-    //rooms = other.rooms;
-    //return *this;
-//}
+Maze::Maze(const Maze& other):
+    rooms()
+{}
 
-//Maze::Maze(Maze&& other):
-    //rooms(move(other.rooms))
-//{
-//}
+
+Maze* Maze::clone() const
+{
+    return new Maze(*this);
+}
+
+
+void Maze::initialize()
+{
+    rooms.clear();
+}
 
 }
 

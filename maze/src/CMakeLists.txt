@@ -5,6 +5,7 @@ set(SOURCE_FILES # General files:
                  # Patterns:
                  "MazeAbstractFactory.cpp"
                  "MazeFactoryMethod.cpp"
+                 "MazePrototypeFactory.cpp"
                  "MazeBuilder.cpp")
 
 # Configure compiling flags

@@ -5,6 +5,7 @@
 #include "MazeAbstractFactory.hpp"
 #include "MazeBuilder.hpp"
 #include "MazeFactoryMethod.hpp"
+#include "MazePrototypeFactory.hpp"
 
 using namespace std;
 using namespace CreationalPatterns;
@@ -20,6 +21,17 @@ void naiveApproach()
 void abstractFactory()
 {
     BombedMazeAbstractFactory factory;
+    unique_ptr<Maze> maze(MazeGame::createMaze(factory));
+}
+
+
+void prototype()
+{
+    MazePrototypeFactory factory(
+        new Maze,
+        new Wall,
+        new Room,
+        new Door);
     unique_ptr<Maze> maze(MazeGame::createMaze(factory));
 }
 
@@ -42,6 +54,8 @@ void builderPattern()
 void factoryMethod()
 {
 
+    // @TODO: Fix memory leak problem.
+    //        Probably an issue in MazeComponents::Room
     EnchantedMazeFactoryMethod factory;
     unique_ptr<Maze> maze(factory.createMaze());
 }
@@ -70,6 +84,11 @@ int main()
         cout << "==============" << endl;
         factoryMethod();
         cout << endl;
+
+        //cout << "Prototype" << endl;
+        //cout << "=========" << endl;
+        //prototype();
+        //cout << endl;
     }
     catch (...)
     {
