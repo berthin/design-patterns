@@ -9,14 +9,14 @@ Implementation of the design patterns discussed in "Design Patterns: Elements of
 @TODO
 
 ## Chapter3. Creational patterns
-The book presents a use case of constructing a Maze and how to address different design patterns to construct the maze components and assemble them in order to create a maze. Therefore, the following patterns are explored:
+The book presents a use case of constructing a Maze and how to address different design patterns to construct the maze components and assemble them in order to create a maze (see [maze doc](maze/doc/main.md) for more details). Hence, the following patterns are covered:
 
 - [Abstract factory](maze/src/MazeAbstractFactory.hpp)
 - [Factory methods](maze/src/MazeFactoryMethod.hpp)
 - [Builder](maze/src/MazeBuilder.hpp)
 - [Prototype](maze/src/MazePrototype.hpp)
 
-One more pattern that was included in the book, but not developed as it was designed in the book is the Singleton. However, to cover that topic I decided to implement a very basic *Logger* that prints a message in `std::out`.
+One more pattern that was included, but not developed as it was designed in the book, is the *Singleton*. However, to cover that topic I decided to implement a very basic *Logger* that prints a message in `std::out`; and therefore, the logger implements the *Singleton* pattern.
 
 - [Singleton](maze/src/Logger.hpp)
 
