@@ -20,6 +20,15 @@ One more pattern that was included, but not developed as it was designed in the 
 
 - [Singleton](creational_patterns/src/Logger.hpp)
 
+## Chapter4. Structural patterns
+
+- [Adapter](structural_patterns/src/AdapterClient.hpp)
+- [Composite]
+- [Proxy]
+- [Flyweight]
+- [Facade]
+- [Bridge]
+- [Decorator]
 
 ## How to build and compile the code
 It is used `cmake` and `ninja` for compiling and building (see the `CMakeLists.txt` file of each example for more details), but 
