@@ -13,7 +13,8 @@ int main()
     try {
         cout << "Adapter" << endl;
         cout << "=======" << endl;
-        AdapterClient::run();
+        AdapterClient adapter;
+        adapter.run();
     }
     catch (...) {
         cout << "Something bad happened." << endl;

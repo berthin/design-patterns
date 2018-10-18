@@ -1,3 +1,7 @@
+//===================================================
+// This class emulates a third party library that
+// receives a list of strings and prints them out.
+//===================================================
 #ifndef FANCY_PRINTER
 #define FANCY_PRINTER
 

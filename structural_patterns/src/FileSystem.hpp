@@ -1,7 +1,11 @@
+//===================================================
+// A class that represent a basic FileSystem.
+//
+// It is used only in demonstration purposes for the
+// Adapter method.
+//===================================================
 #ifndef FILE_SYSTEM_HPP
 #define FILE_SYSTEM_HPP
-
-//#include "PathPrinter.hpp"
 
 #include <memory>           // for std::unique_ptr
 #include <string>           // for std::string

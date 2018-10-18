@@ -1,3 +1,13 @@
+//===================================================
+// This class represents the Adapter that implements
+// both: PathPrinter and FancyPrinter.
+// Considering that PathPrinter is the Interface we
+// are using and FancyPrinter is a "thrid-party"
+// library that we want to use, FancyPathPrinter
+// allows us to wrap and use the third-party library
+// in our system.
+//===================================================
+
 #ifndef FANCY_PATH_PRINTER_HPP
 #define FANCY_PATH_PRINTER_HPP
 
@@ -24,11 +34,11 @@ public:
     virtual std::string print(
         FileSystem& file) const;
 
-    ~FancyPathPrinter() = default;
+    virtual ~FancyPathPrinter() = default;
+
 private:
     std::vector<std::string> getTreeFromRoot(
         FileSystem& file) const;
-    //std::unique_ptr<FancyPrinter> printer;
 };
 
 }

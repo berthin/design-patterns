@@ -2,7 +2,6 @@
 
 #include <iostream>         // for std::cout
 #include <string>           // for std::string
-#include <memory>           // for std::unique_ptr
 
 #include "FileSystem.hpp"
 #include "FancyPathPrinter.hpp"
@@ -14,6 +13,10 @@ namespace StructuralPatterns
 {
 
 
+unique_ptr<PathPrinter> AdapterClient::printer =
+    make_unique<FancyPathPrinter>();
+
+
 void AdapterClient::run()
 {
     unique_ptr<FileSystem> fs = make_unique<FileSystem>("root");
@@ -22,7 +25,6 @@ void AdapterClient::run()
                          ->cd("demo")
                          ->cd("hello_world.txt");
 
-    unique_ptr<FancyPathPrinter> printer = make_unique<FancyPathPrinter>();
     cout << "File system example" << endl;
     cout << printer->print(*file) << endl;
 }
