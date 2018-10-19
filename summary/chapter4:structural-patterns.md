@@ -47,7 +47,26 @@ Facade
 Bridge
 ------
 - Separates and object's abstraction from its implementation
+- Usually, the interface defines the behavior of an object and the implementation of that interface is done through inheritance. Abstractions and concrete classes are, therefore, attached forever which makes it hard to change any of the without altering both.
+- Usage:
+    - Avoid binding between the abstract classes and their implementations
+    - Combine different abstractions and implementations that are independent from each other
+    - Hide the implemenation of an abstraction from the client
+    - Avoid have a proliferation of subclasses
+- Participants:
+    - Abstraction, defines the abstract interface 
+    - RefinedAbstraction, extends the interface defined by Abstraction
+    - Implementor, defines the interface for implementation classes
+    - ConcreteImplementor, the implementation of the Implementor
 
 Decorator
 ---------
 - Describes how to add responsibilities to objects dynamically
+
+Differences
+===========
+- Adapter vs Bridge: Adapter is meant to adapt the interface of another library while Bridge separates an interface from its implementation.
+- Adapter vs Decorator: A decorator enhances an object without changing its interface, in that sense a decorator is more transparent to the application than the adapter.
+- Adapter vs Proxy: A proxy defines a representative for another object and does not change its interface.
+
+
