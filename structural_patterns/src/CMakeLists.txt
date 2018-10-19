@@ -4,8 +4,11 @@ set(SOURCE_FILES # Structural Patterns:
                  "FileSystem.cpp"
                  "FancyPrinter.cpp"
                  "FancyPathPrinter.cpp"
-                 #"PathPrinter.cpp"
-                 "AdapterClient.cpp")
+                 "AdapterClient.cpp"
+                 # 2. Bridge
+                 "Graph.cpp"
+                 "GraphImpl.cpp"
+                 "BridgeClient.cpp")
 
 # Configure compiling flags
 set(CMAKE_CXX_FLAGS "-std=c++14 -g")
