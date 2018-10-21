@@ -26,6 +26,12 @@ Adapter
 Composite
 ---------
 - Describes how to build a class hierarchy made up of classes for two kinds of objects: primitive and composite.
+- It is used when you want to represent part-whole hierarchies of objects. Also, when you want to ignore difference between compositions of objects and individual objects.
+- Participants:
+    1. Component; who declares the general interface
+    2. Leaf; an implementation of Component who has no composition
+    3. Composite; an implementation of Component who has elements of the type Component
+    4. Client; who manipulates objects in the composition through the component interface
 
 Proxy
 -----
