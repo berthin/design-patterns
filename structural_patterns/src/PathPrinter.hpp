@@ -22,7 +22,7 @@ class PathPrinter
 {
 
 public:
-    virtual std::string print(FileSystem& file) const = 0;
+    virtual std::string print(FileSystem* file) const = 0;
 
     virtual ~PathPrinter() = default;
 };

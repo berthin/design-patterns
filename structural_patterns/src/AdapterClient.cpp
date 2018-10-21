@@ -19,14 +19,25 @@ unique_ptr<PathPrinter> AdapterClient::printer =
 
 void AdapterClient::run()
 {
-    unique_ptr<FileSystem> fs = make_unique<FileSystem>("root");
+    unique_ptr<Directory> root = make_unique<Directory>("root");
 
-    FileSystem* file = fs->cd("home")
-                         ->cd("demo")
-                         ->cd("hello_world.txt");
+    root->mkdir("home")->cd("home")
+        ->mkdir("demo")->cd("demo")
+        ->touch(make_unique<Mp3File>("ThisLandIsMine"));
 
-    cout << "File system example" << endl;
-    cout << printer->print(*file) << endl;
+    cout << "FileSystem example." << endl << endl;
+
+    for (File* file: root->cd("home")->cd("demo")->ls()) {
+        // Check file type
+        if (file->getExtension() != Mp3File::mp3_ext)
+            continue;
+
+        // Print path
+        cout << printer->print(static_cast<FileSystem*>(file)) << endl;
+
+        // Play song
+        static_cast<Mp3File*>(file)->play();
+    }
 }
 
 

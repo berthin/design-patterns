@@ -13,7 +13,7 @@ FancyPathPrinter::FancyPathPrinter():
 
 
 string FancyPathPrinter::print(
-    FileSystem& file) const
+    FileSystem* file) const
 {
     auto tree = getTreeFromRoot(file);
     return FancyPrinter::print(tree);
@@ -21,13 +21,13 @@ string FancyPathPrinter::print(
 
 
 vector<string> FancyPathPrinter::getTreeFromRoot(
-    FileSystem& file) const
+    FileSystem* file) const
 {
     vector<string> tree;
-    tree.push_back(file.name);
-    while (file.cd("..")) {
-        file = *file.cd("..");
-        tree.push_back(file.name);
+    tree.push_back(file->toString());
+    while (file->cd("..") != file) {
+        file = file->cd("..");
+        tree.push_back(file->toString());
     }
     return vector<string>(tree.rbegin(), tree.rend());
 }

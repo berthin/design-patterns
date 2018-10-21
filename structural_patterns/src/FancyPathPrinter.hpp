@@ -32,13 +32,13 @@ public:
     FancyPathPrinter();
 
     virtual std::string print(
-        FileSystem& file) const;
+        FileSystem* file) const;
 
     virtual ~FancyPathPrinter() = default;
 
 private:
     std::vector<std::string> getTreeFromRoot(
-        FileSystem& file) const;
+        FileSystem* file) const;
 };
 
 }
