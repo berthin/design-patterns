@@ -1,6 +1,7 @@
 #include "GraphImpl.hpp"
 
 #include <climits>          // for std::numeric_limits
+#include <iostream>
 
 using namespace std;
 
@@ -11,14 +12,31 @@ namespace StructuralPatterns
 
 static const int INF = numeric_limits<int>::max();
 
+GraphImpl::GraphImpl(int n_nodes_p):
+    n_nodes(n_nodes_p)
+{}
 
+
+GraphImpl::~GraphImpl()
+{}
+
+
+int GraphImpl::numNodes() const
+{
+    return n_nodes;
+}
+
+
+// ----------------------------------------------------------
 // AdjListGraphImpl
-//
-AdjListGraphImpl::AdjListGraphImpl(int n_nodes_p):
-    n_nodes(n_nodes_p),
+// ----------------------------------------------------------
+
+
+AdjListGraphImpl::AdjListGraphImpl(int n_nodes):
+    GraphImpl(n_nodes),
     cache(),
-    edges(n_nodes, {}),
-    weights(n_nodes, {})
+    edges(n_nodes),
+    weights(n_nodes)
 {}
 
 
@@ -29,16 +47,16 @@ void AdjListGraphImpl::addEdge(int u, int v, int w)
 }
 
 
-int getCost(int u, int v)
+int AdjListGraphImpl::getCost(int u, int v)
 {
     const pair<int, int> key = {u, v};
     if (cache.count(key))
         return cache[key];
 
-    const int n = edges.size();
+    const int n = edges[u].size();
     for (int i = 0; i < n; ++i) {
-        if (edges[i] == v) {
-            return cache[key] = weights[i];
+        if (edges[u][i] == v) {
+            return cache[key] = weights[u][i];
         }
     }
 
@@ -46,7 +64,7 @@ int getCost(int u, int v)
 }
 
 
-vector<int> getNeighbors(int u)
+vector<int> AdjListGraphImpl::getNeighbors(int u)
 {
     cache.clear();
 
@@ -59,11 +77,15 @@ vector<int> getNeighbors(int u)
     return edges[u];
 }
 
+
+// ----------------------------------------------------------
 // AdjMatrixGraphImpl
-//
-AdjMatrixGraphImpl::AdjMatrixGraphImpl(int n_nodes_p):
-    n_nodes(n_nodes_p),
-    edges(n_nodes_p, vector<int>(n_nodes_p, INF))
+// ----------------------------------------------------------
+
+
+AdjMatrixGraphImpl::AdjMatrixGraphImpl(int n_nodes):
+    GraphImpl(n_nodes),
+    edges(n_nodes, vector<int>(n_nodes, INF))
 {}
 
 
@@ -82,11 +104,12 @@ int AdjMatrixGraphImpl::getCost(int u, int v)
 vector<int> AdjMatrixGraphImpl::getNeighbors(int u)
 {
     vector<int> neighbors;
-    for (const int v: edges[u]) {
-        if (v == INF) continue;
-        neighboars.push_back(v);
+    for (int v = 0; v < n_nodes; ++v) {
+        if (edges[u][v] == INF) continue;
+        neighbors.push_back(v);
     }
-    return neighboars;
+    return neighbors;
 }
+
 
 }

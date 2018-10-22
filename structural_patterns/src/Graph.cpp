@@ -1,10 +1,32 @@
 #include "Graph.hpp"
 
+#include <vector>                   // for std::vector
+#include <queue>                    // for std::queue
+#include <functional>               // for std::function
+#include <climits>                  // for std::numeric_limits
+#include <iostream>
 
 using namespace std;
 
+
 namespace StructuralPatterns
 {
+
+
+const int Graph::INF = numeric_limits<int>::max();
+
+// ----------------------------------------------------------
+// Graph
+// ----------------------------------------------------------
+
+
+Graph::Graph(unique_ptr<GraphImpl> impl_p):
+    impl(move(impl_p))
+{}
+
+
+Graph::~Graph()
+{}
 
 
 void Graph::addEdge(int u, int v, int w)
@@ -13,22 +35,29 @@ void Graph::addEdge(int u, int v, int w)
 }
 
 
-WeightedGraph::WeightedGraph(int n_nodes):
-    Graph::impl(make_unique<AdjListGraphImpl>(n_nodes))
+// ----------------------------------------------------------
+// WeightedGraph
+// ----------------------------------------------------------
+
+
+WeightedGraph::WeightedGraph(unique_ptr<GraphImpl> impl_p):
+    Graph(move(impl_p))
 {}
 
 
 int WeightedGraph::shortestPath(int u, int v)
 {
-    static const int INF = numeric_limits<int>::max();
-    static vector<int> cost;
     static auto cmp = [](const pair<int, int>& a,
                          const pair<int, int>& b) {
-        return a.second < b.second;
+        return a.second >= b.second;
     };
 
-    cost.assign(n, INF);
-    priority_queue<pair<int, int>, vector<int, int>, decltype(cmp)> q(cmp);
+    const int n_nodes = impl->numNodes();
+
+    static vector<int> cost;
+    cost.assign(n_nodes, INF);
+
+    priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> q(cmp);
     q.push({u, 0});
 
     while (!q.empty()) {
@@ -50,16 +79,22 @@ int WeightedGraph::shortestPath(int u, int v)
 }
 
 
-UnweightedGraph::UnweightedGraph(int n_nodes):
-    Graph::impl(make_unique<AdjMatrixGraphImpl>(n_nodes))
+// ----------------------------------------------------------
+// UnweightedGraph
+// ----------------------------------------------------------
+
+
+UnweightedGraph::UnweightedGraph(unique_ptr<GraphImpl> impl_p):
+    Graph(move(impl_p))
 {}
 
 
 int UnweightedGraph::shortestPath(int u, int v)
 {
     static vector<bool> seen;
+    const int n_nodes = impl->numNodes();
 
-    seen.assign(n, false);
+    seen.assign(n_nodes, false);
     queue<pair<int, int>> q;
     q.push({u, 0});
 
@@ -78,7 +113,7 @@ int UnweightedGraph::shortestPath(int u, int v)
         }
     }
 
-    return false;
+    return INF;
 }
 
 }
