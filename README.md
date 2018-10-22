@@ -21,13 +21,16 @@ One more pattern that was included, but not developed as it was designed in the 
 - [Singleton](creational_patterns/src/Logger.hpp)
 
 ## Chapter4. Structural patterns
+The patterns covered in this chapter deal with how to represent objects, specially to deal with cases where (by using inheritance) the classes turn out to be unmanageable because of their complexity. The book shows some examples for each pattern, but a difference from Chapter 3 where most of the examples were implemented, I decided to implement other types of examples that use those patterns because I considered easier to understand and to create real scenarios for testing purposes. 
+
+*@TODO: Add a short summary for each pattern and the sample*
 
 - [Adapter](structural_patterns/src/AdapterClient.hpp)
-- [Composite]
+- [Composite](structural_patterns/src/FileSystem.hpp)
 - [Proxy]
 - [Flyweight]
 - [Facade]
-- [Bridge]
+- [Bridge](structural_patterns/src/Graph.hpp)
 - [Decorator]
 
 ## How to build and compile the code
