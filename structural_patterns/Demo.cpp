@@ -11,11 +11,12 @@ int main()
     cout << ("The following structural patterns are implemented:") << endl;
     cout << (" - Adapter") << endl;
     cout << (" - Bridge") << endl;
+    cout << (" - Composite") << endl;
     cout << endl;
 
     try {
-        cout << "Adapter" << endl;
-        cout << "=======" << endl;
+        cout << "Adapter + Composite" << endl;
+        cout << "==================" << endl;
         AdapterClient adapter;
         adapter.run();
 
