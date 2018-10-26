@@ -14,4 +14,4 @@ set(SOURCE_FILES # General files:
 set(CMAKE_CXX_FLAGS "-std=c++14 -g")
 
 # Define the library
-add_library(MazeCreator ${SOURCE_FILES})
+add_library(MazeCreator SHARED ${SOURCE_FILES})

@@ -14,4 +14,4 @@ set(SOURCE_FILES # Structural Patterns:
 set(CMAKE_CXX_FLAGS "-std=c++14 -g")
 
 # Define the library
-add_library(StructuralPatternsLib ${SOURCE_FILES})
+add_library(StructuralPatternsLib SHARED ${SOURCE_FILES})
